@@ -54,6 +54,7 @@ interface BudgetCardProps {
         }
         
         router.refresh();  // 🔄 Automatically refresh page
+        alert("Successfully deleted budget!")
       } catch (error) {
         console.error("Error deleting budget:", error);
       } finally {
@@ -84,7 +85,7 @@ interface BudgetCardProps {
         {isDeleting ? (
           <span className="animate-spin">⏳</span>
         ) : (
-          <Trash2 className="w-5 h-5" /> // Trash icon
+          <Trash2 className="w-5 h-5" />
         )}
       </button>
       </div>

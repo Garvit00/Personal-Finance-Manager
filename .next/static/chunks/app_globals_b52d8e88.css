@@ -1665,12 +1665,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-blue-700:hover {
-      background-color: var(--color-blue-700);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:bg-destructive\/90:hover {
       background-color: color-mix(in oklab, var(--destructive) 90%, transparent);
     }
@@ -1679,12 +1673,6 @@
   @media (hover: hover) {
     .hover\:bg-gray-300:hover {
       background-color: var(--color-gray-300);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-gray-700:hover {
-      background-color: var(--color-gray-700);
     }
   }
 

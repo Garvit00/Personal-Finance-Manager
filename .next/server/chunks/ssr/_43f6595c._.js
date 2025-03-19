@@ -385,8 +385,9 @@ __turbopack_context__.n(__TURBOPACK__imported__module__$5b$project$5d2f$componen
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-/* __next_internal_action_entry_do_not_use__ {"40b0f82f60e0c70d8efd2f18a230903e01136a5c38":"$$RSC_SERVER_ACTION_0"} */ __turbopack_context__.s({
+/* __next_internal_action_entry_do_not_use__ {"40b0f82f60e0c70d8efd2f18a230903e01136a5c38":"$$RSC_SERVER_ACTION_0","40c0a5fa4f9b08535e53d3e4fed2a7df159994b821":"$$RSC_SERVER_ACTION_1"} */ __turbopack_context__.s({
     "$$RSC_SERVER_ACTION_0": (()=>$$RSC_SERVER_ACTION_0),
+    "$$RSC_SERVER_ACTION_1": (()=>$$RSC_SERVER_ACTION_1),
     "default": (()=>TransactionsPage)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js [app-rsc] (ecmascript)");
@@ -494,6 +495,11 @@ const /*#__TURBOPACK_DISABLE_EXPORT_MERGING__*/ $$RSC_SERVER_ACTION_0 = async fu
         method: "DELETE"
     });
 };
+const /*#__TURBOPACK_DISABLE_EXPORT_MERGING__*/ $$RSC_SERVER_ACTION_1 = async function handleDeleteTransaction(id) {
+    await fetch(`http://localhost:3000/api/transactions/${id}`, {
+        method: "DELETE"
+    });
+};
 async function TransactionsPage() {
     // Fetch transactions from the API
     const transactions = await getTransactions();
@@ -504,7 +510,10 @@ async function TransactionsPage() {
     const categoryExpenses = calculateCategoryExpenses(transactions);
     const totalExpenses = transactions.reduce((total, transaction)=>total + transaction.amount, 0);
     const recentTransactions = transactions.slice(0, 2);
+    // deleting budget
     const handleDeleteBudget = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])($$RSC_SERVER_ACTION_0, "40b0f82f60e0c70d8efd2f18a230903e01136a5c38", null);
+    //deleting transaction
+    const handleDeleteTransaction = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])($$RSC_SERVER_ACTION_1, "40c0a5fa4f9b08535e53d3e4fed2a7df159994b821", null);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "container mx-auto p-4 space-y-8",
         children: [
@@ -513,7 +522,7 @@ async function TransactionsPage() {
                 children: "Transactions"
             }, void 0, false, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 134,
+                lineNumber: 143,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -524,18 +533,18 @@ async function TransactionsPage() {
                         children: "Add New Transaction"
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 138,
+                        lineNumber: 147,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$TransactionForm$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["TransactionForm"], {}, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 139,
+                        lineNumber: 148,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 137,
+                lineNumber: 146,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -546,18 +555,18 @@ async function TransactionsPage() {
                         children: "Set Budget"
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 144,
+                        lineNumber: 153,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Budget$2f$BudgetForm$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["BudgetForm"], {}, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 145,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 143,
+                lineNumber: 152,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -573,19 +582,19 @@ async function TransactionsPage() {
                         onDelete: handleDeleteBudget
                     }, budget._id, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 152,
+                        lineNumber: 161,
                         columnNumber: 17
                     }, this);
                 }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     children: "No budget data available!!"
                 }, void 0, false, {
                     fileName: "[project]/app/transactions/page.tsx",
-                    lineNumber: 164,
+                    lineNumber: 173,
                     columnNumber: 7
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 149,
+                lineNumber: 158,
                 columnNumber: 8
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -596,20 +605,20 @@ async function TransactionsPage() {
                         children: "Budget vs Actual"
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 169,
+                        lineNumber: 178,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Budget$2f$BudgetVsActualChart$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["BudgetVsActualChart"], {
                         data: budgetVsActualData
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 170,
+                        lineNumber: 179,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 168,
+                lineNumber: 177,
                 columnNumber: 8
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -619,27 +628,27 @@ async function TransactionsPage() {
                         total: totalExpenses
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 175,
+                        lineNumber: 184,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CategoryBreakdownCard$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CategoryBreakdownCard"], {
                         data: categoryExpenses
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 176,
+                        lineNumber: 185,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$RecentTransactionsCard$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["RecentTransactionsCard"], {
                         transactions: recentTransactions
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 177,
+                        lineNumber: 186,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 174,
+                lineNumber: 183,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -650,20 +659,20 @@ async function TransactionsPage() {
                         children: "Monthly Expenses"
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 182,
+                        lineNumber: 191,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MonthlyExpensesChart$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["MonthlyExpensesChart"], {
                         data: monthlyExpenses
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 183,
+                        lineNumber: 192,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 181,
+                lineNumber: 190,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -674,20 +683,20 @@ async function TransactionsPage() {
                         children: "Category-wise Expenses"
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 187,
+                        lineNumber: 196,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CategoryPieChart$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CategoryPieChart"], {
                         data: categoryExpenses
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 188,
+                        lineNumber: 197,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 186,
+                lineNumber: 195,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -698,26 +707,27 @@ async function TransactionsPage() {
                         children: "Transactions List"
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 193,
+                        lineNumber: 202,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$TransactionList$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["TransactionList"], {
-                        transactions: transactions
+                        transactions: transactions,
+                        onDelete: handleDeleteTransaction
                     }, void 0, false, {
                         fileName: "[project]/app/transactions/page.tsx",
-                        lineNumber: 194,
-                        columnNumber: 9
+                        lineNumber: 203,
+                        columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/transactions/page.tsx",
-                lineNumber: 192,
+                lineNumber: 201,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/transactions/page.tsx",
-        lineNumber: 132,
+        lineNumber: 141,
         columnNumber: 5
     }, this);
 }
@@ -728,6 +738,7 @@ async function TransactionsPage() {
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({});
+;
 ;
 }}),
 "[project]/.next-internal/server/app/transactions/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/transactions/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript) <module evaluation>": ((__turbopack_context__) => {
@@ -745,7 +756,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "40b0f82f60e0c70d8efd2f18a230903e01136a5c38": (()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["$$RSC_SERVER_ACTION_0"])
+    "40b0f82f60e0c70d8efd2f18a230903e01136a5c38": (()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["$$RSC_SERVER_ACTION_0"]),
+    "40c0a5fa4f9b08535e53d3e4fed2a7df159994b821": (()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["$$RSC_SERVER_ACTION_1"])
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/transactions/page.tsx [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$transactions$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i('[project]/.next-internal/server/app/transactions/page/actions.js { ACTIONS_MODULE0 => "[project]/app/transactions/page.tsx [app-rsc] (ecmascript)" } [app-rsc] (server actions loader, ecmascript) <locals>');
@@ -756,7 +768,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "40b0f82f60e0c70d8efd2f18a230903e01136a5c38": (()=>__TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$transactions$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$exports$3e$__["40b0f82f60e0c70d8efd2f18a230903e01136a5c38"])
+    "40b0f82f60e0c70d8efd2f18a230903e01136a5c38": (()=>__TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$transactions$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$exports$3e$__["40b0f82f60e0c70d8efd2f18a230903e01136a5c38"]),
+    "40c0a5fa4f9b08535e53d3e4fed2a7df159994b821": (()=>__TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$transactions$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$exports$3e$__["40c0a5fa4f9b08535e53d3e4fed2a7df159994b821"])
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$transactions$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i('[project]/.next-internal/server/app/transactions/page/actions.js { ACTIONS_MODULE0 => "[project]/app/transactions/page.tsx [app-rsc] (ecmascript)" } [app-rsc] (server actions loader, ecmascript) <module evaluation>');
 var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$transactions$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$app$2f$transactions$2f$page$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$exports$3e$__ = __turbopack_context__.i('[project]/.next-internal/server/app/transactions/page/actions.js { ACTIONS_MODULE0 => "[project]/app/transactions/page.tsx [app-rsc] (ecmascript)" } [app-rsc] (server actions loader, ecmascript) <exports>');

@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Trash2 } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -19,6 +22,7 @@ interface Transaction {
 
 interface TransactionListProps {
   transactions: Transaction[];
+  onDelete: (id: string) => void;
 }
 
 const formatDate = (date: string | number | Date) => {
@@ -31,7 +35,32 @@ const formatDate = (date: string | number | Date) => {
 
 
 
-export function TransactionList({ transactions }: TransactionListProps) {
+export function TransactionList({transactions, onDelete }: TransactionListProps) {
+
+  const router = useRouter();
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const handleDelete = async (id: string) => {
+    setDeletingId(id);
+    onDelete(id);  // Update UI after delete
+    try {
+      const response = await fetch(`/api/transactions/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete transaction");
+      }
+      
+      router.refresh();  // 🔄 Automatically refresh page
+      alert("Transaction Deleted!!")
+    } catch (error) {
+      console.error("Error deleting Transaction:", error);
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
   return (
     <Table>
       <TableHeader>
@@ -40,6 +69,7 @@ export function TransactionList({ transactions }: TransactionListProps) {
           <TableHead>Amount</TableHead>
           <TableHead>Category</TableHead>
           <TableHead>Description</TableHead>
+          <TableHead>Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -51,6 +81,18 @@ export function TransactionList({ transactions }: TransactionListProps) {
             <TableCell>₹ {transaction.amount.toFixed(2)}</TableCell>
             <TableCell>{transaction.category}</TableCell>
             <TableCell>{transaction.description}</TableCell>
+            <TableCell>
+              <button 
+              onClick={() => handleDelete(transaction._id)}
+              className="bg-white-500 text-black rounded-full hover:bg-gray-300 cursor-pointer transition duration-200"
+              disabled={deletingId === transaction._id}
+              >
+                {deletingId === transaction._id ? (
+                  <span className="animate-spin">⌛</span>
+                ) : (
+                  <Trash2 className="w-5 h-5"/>
+                )}
+                </button></TableCell>
           </TableRow>
         ))}
       </TableBody>

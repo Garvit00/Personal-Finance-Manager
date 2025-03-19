@@ -183,9 +183,7 @@ const __TURBOPACK__default__export__ = BudgetModel;
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "DELETE": (()=>DELETE),
-    "GET": (()=>GET),
-    "PUT": (()=>PUT)
+    "DELETE": (()=>DELETE)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/server.js [app-route] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/db.ts [app-route] (ecmascript)");
@@ -193,61 +191,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$models$2f$Budget$2e$ts__$5b$
 ;
 ;
 ;
-async function GET(_, { params }) {
+async function DELETE(_, context) {
     await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])();
     try {
-        const { id } = params;
-        const budget = await __TURBOPACK__imported__module__$5b$project$5d2f$models$2f$Budget$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"].findById(id);
-        if (!budget) {
-            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                error: "Budget not found"
-            }, {
-                status: 404
-            });
-        }
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(budget, {
-            status: 200
-        });
-    } catch (error) {
-        console.error("Error fetching budget:", error);
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: "Failed to fetch budget"
-        }, {
-            status: 500
-        });
-    }
-}
-async function PUT(req, { params }) {
-    await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])();
-    try {
-        const { id } = params;
-        const data = await req.json();
-        const updatedBudget = await __TURBOPACK__imported__module__$5b$project$5d2f$models$2f$Budget$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"].findByIdAndUpdate(id, data, {
-            new: true
-        });
-        if (!updatedBudget) {
-            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                error: "Budget not found"
-            }, {
-                status: 404
-            });
-        }
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(updatedBudget, {
-            status: 200
-        });
-    } catch (error) {
-        console.error("Error updating budget:", error);
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: "Failed to update budget"
-        }, {
-            status: 500
-        });
-    }
-}
-async function DELETE(_, { params }) {
-    await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])();
-    try {
-        const id = params?.id;
+        const { id } = await context.params;
         const deletedBudget = await __TURBOPACK__imported__module__$5b$project$5d2f$models$2f$Budget$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"].findByIdAndDelete(id);
         if (!deletedBudget) {
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({

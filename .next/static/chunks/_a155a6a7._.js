@@ -166,8 +166,15 @@ __turbopack_context__.s({
     "TransactionList": (()=>TransactionList)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/table.tsx [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 "use client";
+;
+;
 ;
 ;
 const formatDate = (date)=>{
@@ -177,7 +184,28 @@ const formatDate = (date)=>{
         year: 'numeric'
     });
 };
-function TransactionList({ transactions }) {
+function TransactionList({ transactions, onDelete }) {
+    _s();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const [deletingId, setDeletingId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const handleDelete = async (id)=>{
+        setDeletingId(id);
+        onDelete(id); // Update UI after delete
+        try {
+            const response = await fetch(`/api/transactions/${id}`, {
+                method: "DELETE"
+            });
+            if (!response.ok) {
+                throw new Error("Failed to delete transaction");
+            }
+            router.refresh(); // 🔄 Automatically refresh page
+            alert("Transaction Deleted!!");
+        } catch (error) {
+            console.error("Error deleting Transaction:", error);
+        } finally{
+            setDeletingId(null);
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHeader"], {
@@ -187,39 +215,46 @@ function TransactionList({ transactions }) {
                             children: "Date"
                         }, void 0, false, {
                             fileName: "[project]/components/TransactionList.tsx",
-                            lineNumber: 39,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
                             children: "Amount"
                         }, void 0, false, {
                             fileName: "[project]/components/TransactionList.tsx",
-                            lineNumber: 40,
+                            lineNumber: 69,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
                             children: "Category"
                         }, void 0, false, {
                             fileName: "[project]/components/TransactionList.tsx",
-                            lineNumber: 41,
+                            lineNumber: 70,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
                             children: "Description"
                         }, void 0, false, {
                             fileName: "[project]/components/TransactionList.tsx",
-                            lineNumber: 42,
+                            lineNumber: 71,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                            children: "Action"
+                        }, void 0, false, {
+                            fileName: "[project]/components/TransactionList.tsx",
+                            lineNumber: 72,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/TransactionList.tsx",
-                    lineNumber: 38,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/TransactionList.tsx",
-                lineNumber: 37,
+                lineNumber: 66,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
@@ -229,7 +264,7 @@ function TransactionList({ transactions }) {
                                 children: formatDate(transaction.date)
                             }, void 0, false, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 48,
+                                lineNumber: 78,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -239,41 +274,75 @@ function TransactionList({ transactions }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 51,
+                                lineNumber: 81,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                 children: transaction.category
                             }, void 0, false, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 52,
+                                lineNumber: 82,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                 children: transaction.description
                             }, void 0, false, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 53,
+                                lineNumber: 83,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>handleDelete(transaction._id),
+                                    className: "bg-white-500 text-black rounded-full hover:bg-gray-300 cursor-pointer transition duration-200",
+                                    disabled: deletingId === transaction._id,
+                                    children: deletingId === transaction._id ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "animate-spin",
+                                        children: "⌛"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/TransactionList.tsx",
+                                        lineNumber: 91,
+                                        columnNumber: 19
+                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
+                                        className: "w-5 h-5"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/TransactionList.tsx",
+                                        lineNumber: 93,
+                                        columnNumber: 19
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/components/TransactionList.tsx",
+                                    lineNumber: 85,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/components/TransactionList.tsx",
+                                lineNumber: 84,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, transaction._id, true, {
                         fileName: "[project]/components/TransactionList.tsx",
-                        lineNumber: 47,
+                        lineNumber: 77,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/components/TransactionList.tsx",
-                lineNumber: 45,
+                lineNumber: 75,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/TransactionList.tsx",
-        lineNumber: 36,
+        lineNumber: 65,
         columnNumber: 5
     }, this);
 }
+_s(TransactionList, "6KmiKF9sfbJThtL70/+531IRhXU=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = TransactionList;
 var _c;
 __turbopack_context__.k.register(_c, "TransactionList");
@@ -1781,20 +1850,42 @@ const CustomTooltip = ({ active, payload })=>{
         const { category, budget, actual, month, year } = payload[0].payload;
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "bg-white p-2 border border-gray-300 rounded shadow-md",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                children: [
-                    new Date(year, month - 1).toLocaleString("en-US", {
-                        month: "long"
-                    }),
-                    " ",
-                    year
-                ]
-            }, void 0, true, {
-                fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-                lineNumber: 22,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                    children: [
+                        new Date(year, month - 1).toLocaleString("en-US", {
+                            month: "long"
+                        }),
+                        " ",
+                        year
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
+                    lineNumber: 22,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: [
+                        "Budget: ₹ ",
+                        budget
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
+                    lineNumber: 23,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: [
+                        "Actual: ₹ ",
+                        actual
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
+                    lineNumber: 24,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
             fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
             lineNumber: 21,
             columnNumber: 7
@@ -1814,28 +1905,28 @@ function BudgetVsActualChart({ data }) {
                     dataKey: "category"
                 }, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-                    lineNumber: 33,
+                    lineNumber: 35,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YAxis"], {}, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-                    lineNumber: 34,
+                    lineNumber: 36,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {
                     content: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomTooltip, {}, void 0, false, {
                         fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-                        lineNumber: 35,
+                        lineNumber: 37,
                         columnNumber: 27
                     }, void 0)
                 }, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-                    lineNumber: 35,
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-                    lineNumber: 36,
+                    lineNumber: 38,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Bar"], {
@@ -1844,7 +1935,7 @@ function BudgetVsActualChart({ data }) {
                     name: "Budget"
                 }, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-                    lineNumber: 37,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Bar"], {
@@ -1853,18 +1944,18 @@ function BudgetVsActualChart({ data }) {
                     name: "Actual"
                 }, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-                    lineNumber: 38,
+                    lineNumber: 40,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-            lineNumber: 32,
+            lineNumber: 34,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/Budget/BudgetVsActualChart.tsx",
-        lineNumber: 31,
+        lineNumber: 33,
         columnNumber: 5
     }, this);
 }
@@ -1921,6 +2012,7 @@ function BudgetCard({ id, category, budget, transactions = [], month, year, onDe
                 throw new Error("Failed to delete budget");
             }
             router.refresh(); // 🔄 Automatically refresh page
+            alert("Successfully deleted budget!");
         } catch (error) {
             console.error("Error deleting budget:", error);
         } finally{
@@ -1941,7 +2033,7 @@ function BudgetCard({ id, category, budget, transactions = [], month, year, onDe
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Budget/BudgetCard.tsx",
-                lineNumber: 66,
+                lineNumber: 67,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1952,7 +2044,7 @@ function BudgetCard({ id, category, budget, transactions = [], month, year, onDe
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Budget/BudgetCard.tsx",
-                lineNumber: 67,
+                lineNumber: 68,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1963,7 +2055,7 @@ function BudgetCard({ id, category, budget, transactions = [], month, year, onDe
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Budget/BudgetCard.tsx",
-                lineNumber: 68,
+                lineNumber: 69,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1975,12 +2067,12 @@ function BudgetCard({ id, category, budget, transactions = [], month, year, onDe
                     }
                 }, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetCard.tsx",
-                    lineNumber: 70,
+                    lineNumber: 71,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Budget/BudgetCard.tsx",
-                lineNumber: 69,
+                lineNumber: 70,
                 columnNumber: 9
             }, this),
             progress > 100 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1988,7 +2080,7 @@ function BudgetCard({ id, category, budget, transactions = [], month, year, onDe
                 children: "You've exceeded your budget!"
             }, void 0, false, {
                 fileName: "[project]/components/Budget/BudgetCard.tsx",
-                lineNumber: 76,
+                lineNumber: 77,
                 columnNumber: 11
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2000,24 +2092,24 @@ function BudgetCard({ id, category, budget, transactions = [], month, year, onDe
                     children: "⏳"
                 }, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetCard.tsx",
-                    lineNumber: 85,
+                    lineNumber: 86,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
                     className: "w-5 h-5"
                 }, void 0, false, {
                     fileName: "[project]/components/Budget/BudgetCard.tsx",
-                    lineNumber: 87,
+                    lineNumber: 88,
                     columnNumber: 11
-                }, this) // Trash icon
+                }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Budget/BudgetCard.tsx",
-                lineNumber: 79,
+                lineNumber: 80,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Budget/BudgetCard.tsx",
-        lineNumber: 65,
+        lineNumber: 66,
         columnNumber: 7
     }, this);
 }

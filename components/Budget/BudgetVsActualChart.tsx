@@ -19,7 +19,9 @@ const CustomTooltip = ({ active, payload }: any) => {
     const { category, budget, actual, month, year } = payload[0].payload;
     return (
       <div className="bg-white p-2 border border-gray-300 rounded shadow-md">
-        <p>{new Date(year, month - 1).toLocaleString("en-US", { month: "long" })} {year}</p>
+        <strong>{new Date(year, month - 1).toLocaleString("en-US", { month: "long" })} {year}</strong>
+        <p>Budget: ₹ {budget}</p>
+        <p>Actual: ₹ {actual}</p>
       </div>
     );
   }

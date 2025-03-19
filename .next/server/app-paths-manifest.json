@@ -1,8 +1,8 @@
 {
   "/api/budgets/[id]/route": "app/api/budgets/[id]/route.js",
   "/api/budgets/route": "app/api/budgets/route.js",
+  "/api/transactions/[id]/route": "app/api/transactions/[id]/route.js",
   "/api/transactions/route": "app/api/transactions/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js",
   "/transactions/page": "app/transactions/page.js"
 }

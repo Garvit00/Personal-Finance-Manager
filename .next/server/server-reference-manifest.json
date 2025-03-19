@@ -10,6 +10,17 @@
       "layer": {
         "app/transactions/page": "rsc"
       }
+    },
+    "40c0a5fa4f9b08535e53d3e4fed2a7df159994b821": {
+      "workers": {
+        "app/transactions/page": {
+          "moduleId": "[project]/.next-internal/server/app/transactions/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/transactions/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/transactions/page": "rsc"
+      }
     }
   },
   "edge": {},

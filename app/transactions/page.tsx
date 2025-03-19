@@ -120,9 +120,18 @@ export default async function TransactionsPage() {
   const totalExpenses = transactions.reduce((total, transaction) => total + transaction.amount, 0);
   const recentTransactions = transactions.slice(0, 2);  
 
+  // deleting budget
   const handleDeleteBudget = async (id: string) => {
     "use server";
     await fetch(`http://localhost:3000/api/budgets/${id}`,{
+      method: "DELETE",
+    });
+  };
+
+  //deleting transaction
+  const handleDeleteTransaction = async (id: string) => {
+    "use server";
+    await fetch(`http://localhost:3000/api/transactions/${id}`,{
       method: "DELETE",
     });
   };
@@ -191,7 +200,10 @@ export default async function TransactionsPage() {
       {/* Transaction List */}
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">Transactions List</h2>
-        <TransactionList transactions={transactions} />
+            <TransactionList
+              transactions = {transactions}
+              onDelete={handleDeleteTransaction}
+            />
       </div>
     </div>
   );
