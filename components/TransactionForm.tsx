@@ -12,6 +12,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover"
+import { useRouter } from "next/navigation";
 
 const CATEGORIES = ["Food", "Transportation", "Entertainment", "Utilities", "Shopping", "Bills"];
 
@@ -28,6 +29,7 @@ const formSchema = z.object({
 
 export function TransactionForm() {
 
+  const router = useRouter()
    // State to prevent SSR mismatch
    const [isClient, setIsClient] = useState(false);
 
@@ -57,11 +59,10 @@ export function TransactionForm() {
     
         if (!res.ok) throw new Error("Failed to create transaction");
     
-        const newTransaction = await res.json();
-        alert("Transaction added successfully!");
-        console.log("Transaction created:", newTransaction);
-    
         form.reset();
+        router.refresh();
+        alert("Transaction added successfully!");
+    
       } catch (error) {
         console.error("Error creating transaction:", error);
         alert("Failed to add transaction!");

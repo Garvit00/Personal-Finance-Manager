@@ -8,6 +8,7 @@ import {Button} from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {Input} from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 
 const CATEGORIES = ["Food", "Transportation", "Entertainment", "Utilities", "Shopping", "Bills"];
 
@@ -28,6 +29,7 @@ const formSchema = z.object({
 });
 
   export function BudgetForm() {
+    const router = useRouter();
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -46,8 +48,6 @@ const formSchema = z.object({
 
         const onSubmit = async (values: z.infer<typeof formSchema>) => {
           try {
-            console.log("Submitting Budget Data:", values);
-        
             const res = await fetch("/api/budgets", {
               method: "POST",
               headers: {
@@ -59,11 +59,9 @@ const formSchema = z.object({
             if (!res.ok) {
               throw new Error(`Failed to create budget: ${res.status} ${res.statusText}`);
             }
-        
-            const newBudget = await res.json();
-            console.log("Budget created successfully:", newBudget);
-        
+            
             form.reset();
+            router.refresh();
             alert("Budget added successfully!");
           } catch (error) {
             console.error("Error creating budget:", error);

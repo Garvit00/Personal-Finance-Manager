@@ -183,7 +183,6 @@ const __TURBOPACK__default__export__ = BudgetModel;
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.s({
-    "DELETE": (()=>DELETE),
     "GET": (()=>GET),
     "POST": (()=>POST),
     "PUT": (()=>PUT)
@@ -253,36 +252,6 @@ async function PUT(request) {
     } catch (error) {
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
             error: "Failed to update budget"
-        }, {
-            status: 500
-        });
-    }
-}
-async function DELETE(request) {
-    await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])();
-    try {
-        const { _id } = await request.json();
-        if (!_id) {
-            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                error: "Missing budget ID"
-            }, {
-                status: 400
-            });
-        }
-        const deletedBudget = await __TURBOPACK__imported__module__$5b$project$5d2f$models$2f$Budget$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"].findByIdAndDelete(_id);
-        if (!deletedBudget) {
-            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                error: "Budget not found"
-            }, {
-                status: 404
-            });
-        }
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            message: "Budget deleted successfully"
-        });
-    } catch (error) {
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: "Failed to delete budget"
         }, {
             status: 500
         });

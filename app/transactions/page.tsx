@@ -23,13 +23,15 @@ async function getTransactions(): Promise<Transaction[]> {
   const res = await fetch("http://localhost:3000/api/transactions", {
     cache: "no-store", // Ensure fresh data on every request
   });
-  const json = await res.json()
   if (!res.ok) throw new Error("Failed to fetch transactions");
-  return json.data || [];
+  const transactions = await res.json()
+  return transactions.data || [];
 }
 
 async function getBudgets(): Promise<BudgetType[]> {
-  const res = await fetch("http://localhost:3000/api/budgets");
+  const res = await fetch("http://localhost:3000/api/budgets",{
+    cache: "no-store",
+  });
   if (!res.ok) throw new Error("Failed to fetch budgets");
   const budgets = await res.json();
   return budgets.data || [];
@@ -111,13 +113,20 @@ export default async function TransactionsPage() {
   const transactions = await getTransactions();
   const budgets = await getBudgets();
   
+  //calculate data for charts and summaries
   const budgetVsActualData = calculateBudgetVsActual(transactions, budgets);
-
-  // Calculate monthly expenses for the chart
   const monthlyExpenses = calculateMonthlyExpenses(transactions);
   const categoryExpenses = calculateCategoryExpenses(transactions);
   const totalExpenses = transactions.reduce((total, transaction) => total + transaction.amount, 0);
-  const recentTransactions = transactions.slice(0, 2);
+  const recentTransactions = transactions.slice(0, 2);  
+
+  const handleDeleteBudget = async (id: string) => {
+    "use server";
+    await fetch(`http://localhost:3000/api/budgets/${id}`,{
+      method: "DELETE",
+    });
+  };
+  
 
   return (
     <div className="container mx-auto p-4 space-y-8">
@@ -142,17 +151,19 @@ export default async function TransactionsPage() {
         budgets.map((budget) => {
         return (<BudgetCard
         key={budget._id}
+        id={budget._id}
         category={budget.category}
         budget={budget.amount}
         transactions={transactions}
         month={budget.month}
         year={budget.year}
+        onDelete={handleDeleteBudget}
+        
       />);
 })) : (
-      <p>No budget data available</p>
+      <p>No budget data available!!</p>
       )}
       </div>
-
        {/* Budget vs Actual Comparison Chart */}
        <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">Budget vs Actual</h2>
